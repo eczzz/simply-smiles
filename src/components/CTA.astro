@@ -1,0 +1,319 @@
+---
+// CTA Section Component - Simply Smiles
+---
+
+<section class="cta-section">
+  <!-- Decorative Cloud Left -->
+  <div class="cloud cloud-left">
+    <img src="/clouds.svg" alt="" class="cloud-img" />
+  </div>
+
+  <!-- Decorative Cloud Right -->
+  <div class="cloud cloud-right">
+    <img src="/clouds.svg" alt="" class="cloud-img" />
+  </div>
+
+  <!-- Decorative Confetti -->
+  <div class="confetti">
+    <img src="/bang-and-pop.svg" alt="" class="confetti-img" />
+  </div>
+
+  <!-- Content Container -->
+  <div class="cta-content scroll-animate">
+    <div class="cta-badge">
+      <span>Build a Quote for your Event</span>
+    </div>
+    <h2 class="cta-heading">Ready To Make Your Event Unforgettable?</h2>
+    <p class="cta-subheading">
+      <span>Flexible scheduling</span>
+      <span class="bullet">•</span>
+      <span>Fast responses</span>
+      <span class="bullet">•</span>
+      <span>No-hassle booking</span>
+    </p>
+    <a href="/contact" class="cta-button">BOOK NOW</a>
+  </div>
+</section>
+
+<style>
+  .cta-section {
+    position: relative;
+    width: 100%;
+    min-height: 491px;
+    background: #EE5D24;
+    border-top: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    overflow: hidden;
+  }
+
+  /* Content Container */
+  .cta-content {
+    width: 100%;
+    max-width: 787px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    z-index: 2;
+  }
+
+  /* Badge */
+  .cta-badge {
+    width: auto;
+    height: 32px;
+    background: #FD91E7;
+    border: 1px solid #000000;
+    box-shadow: 6px 6px 0px #000000;
+    transform: rotate(-2.81deg);
+    padding: 4px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  .cta-badge span {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: capitalize;
+    color: #000000;
+  }
+
+  .cta-badge {
+    transition: transform 0.3s ease;
+  }
+
+  .cta-badge:hover {
+    animation: badgeWiggle 0.5s ease;
+  }
+
+  /* Heading */
+  .cta-heading {
+    width: 100%;
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 64px;
+    line-height: 75px;
+    text-transform: capitalize;
+    text-align: center;
+    color: #FFC904;
+    -webkit-text-stroke: 1.5px #000000;
+    text-shadow: 6px 6px 0px #000000;
+    margin: 0;
+  }
+
+  /* Subheading */
+  .cta-subheading {
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    text-align: center;
+    color: #000000;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .bullet {
+    font-weight: 700;
+  }
+
+  /* Button */
+  .cta-button {
+    width: auto;
+    height: 56px;
+    background: #24A096;
+    border: 1px solid #000000;
+    box-shadow: 6px 6px 0px #000000;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #FAFAFA;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 6px 10px 0px #000000;
+    background: #1d8a81;
+  }
+
+  /* Decorative Clouds */
+  .cloud {
+    position: absolute;
+    z-index: 1;
+  }
+
+  .cloud-img {
+    width: 180px;
+    height: auto;
+    object-fit: contain;
+    animation: cloudFloat 4s ease-in-out infinite;
+  }
+
+  .cloud-left {
+    left: 90px;
+    top: 16%;
+  }
+
+  .cloud-right {
+    right: 83px;
+    top: 14%;
+  }
+
+  .cloud-right .cloud-img {
+    transform: scaleX(-1);
+    animation: cloudFloatFlipped 4s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+
+  /* Decorative Confetti */
+  .confetti {
+    position: absolute;
+    right: 8%;
+    bottom: 20%;
+    z-index: 1;
+  }
+
+  .confetti-img {
+    width: 240px;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    animation: confettiBounce 2s ease-in-out infinite;
+  }
+
+  .confetti:hover .confetti-img {
+    animation: confettiShake 0.5s ease;
+  }
+
+  /* Hover Animations */
+  @keyframes badgeWiggle {
+    0%, 100% { transform: rotate(-2.81deg); }
+    25% { transform: rotate(-6deg); }
+    75% { transform: rotate(1deg); }
+  }
+
+  @keyframes cloudFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes cloudFloatFlipped {
+    0%, 100% { transform: scaleX(-1) translateY(0); }
+    50% { transform: scaleX(-1) translateY(-10px); }
+  }
+
+  @keyframes confettiBounce {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-5px) rotate(2deg); }
+  }
+
+  @keyframes confettiShake {
+    0%, 100% { transform: rotate(0deg); }
+    20% { transform: rotate(-5deg); }
+    40% { transform: rotate(5deg); }
+    60% { transform: rotate(-3deg); }
+    80% { transform: rotate(3deg); }
+  }
+
+  /* Responsive - Tablet */
+  @media (max-width: 1200px) {
+    .cta-section {
+      min-height: 400px;
+      padding: 50px 40px;
+    }
+
+    .cta-heading {
+      font-size: 52px;
+      line-height: 62px;
+    }
+
+    .cloud-left {
+      left: 40px;
+    }
+
+    .cloud-right {
+      right: 40px;
+    }
+
+    .cloud-left .cloud-img,
+    .cloud-right .cloud-img {
+      animation: none;
+    }
+
+    .cloud-left .cloud-img {
+      transform: scale(0.8);
+    }
+
+    .cloud-right .cloud-img {
+      transform: scaleX(-1) scale(0.8);
+    }
+
+    .confetti {
+      right: 2%;
+      bottom: 10%;
+    }
+
+    .confetti-img {
+      width: 150px;
+    }
+  }
+
+  /* Responsive - Mobile */
+  @media (max-width: 768px) {
+    .cta-section {
+      min-height: auto;
+      padding: 60px 20px;
+    }
+
+    .cta-heading {
+      font-size: 42px;
+      line-height: 50px;
+    }
+
+    .cta-badge {
+      transform: rotate(0deg);
+    }
+
+    .cta-badge span {
+      font-size: 14px;
+    }
+
+    .cta-subheading {
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .bullet {
+      display: none;
+    }
+
+    .cta-button {
+      width: 100%;
+      max-width: 280px;
+    }
+
+    .cloud,
+    .confetti {
+      display: none;
+    }
+  }
+</style>

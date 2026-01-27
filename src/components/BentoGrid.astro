@@ -1,0 +1,497 @@
+---
+// Bento Grid Gallery Section Component - Simply Smiles
+---
+
+<section class="bento-section">
+  <!-- Decorative Stripes - Top -->
+  <div class="stripes stripes-top">
+    <div class="stripe stripe-teal"></div>
+    <div class="stripe stripe-pink"></div>
+    <div class="stripe stripe-orange"></div>
+  </div>
+
+  <!-- Decorative Stripes - Bottom -->
+  <div class="stripes stripes-bottom">
+    <div class="stripe stripe-teal"></div>
+    <div class="stripe stripe-pink"></div>
+    <div class="stripe stripe-orange"></div>
+  </div>
+
+  <!-- Bento Grid Container -->
+  <div class="bento-container">
+    <!-- Decorative Leaf -->
+    <div class="bento-leaf">
+      <img src="/leaf-bottom.svg" alt="" class="bento-leaf-img" />
+    </div>
+
+    <!-- Box 1 - Top Left (Large Photo) -->
+    <div class="bento-box box-1 scroll-animate">
+      <img src="/group-park.webp" alt="Group event at park" class="bento-img" />
+    </div>
+
+    <!-- Box 2 - Bottom Left (Portrait Photo) -->
+    <div class="bento-box box-2 scroll-animate delay-2">
+      <img src="/danimal.webp" alt="Danimal the entertainer" class="bento-img" />
+    </div>
+
+    <!-- Box 3 - Top Middle (Small Photo) -->
+    <div class="bento-box box-3 scroll-animate delay-1">
+      <img src="/paint-set.webp" alt="Face paint set" class="bento-img" />
+    </div>
+
+    <!-- Box 4 - Bottom Middle (Pink CTA Box) -->
+    <div class="bento-box box-4 cta-box scroll-animate delay-3">
+      <h3 class="cta-heading">Useful Stuffs</h3>
+      <a href="/gallery" class="cta-link cta-white">View Full Gallery From Over The Years</a>
+      <a href="/services" class="cta-link cta-orange">See All The Services Simply Smiles Offers</a>
+      <a href="/testimonials" class="cta-link cta-white">Peep Our Reviews - Clients Love Us</a>
+      <a href="/contact" class="cta-link cta-white">Book Your Unforgettable Event Today!</a>
+    </div>
+
+    <!-- Box 5 - Top Right Wide (Photo) -->
+    <div class="bento-box box-5 scroll-animate delay-2">
+      <img src="/balloon-animal-gallery.webp" alt="Balloon animal creations" class="bento-img" />
+    </div>
+
+    <!-- Box 6 - Top Far Right (Orange Info Box) -->
+    <div class="bento-box box-6 info-box scroll-animate delay-1">
+      <h3 class="info-heading">See the Smiles</h3>
+      <p class="info-text">Here's a glimpse of the magic we bring to every event.</p>
+    </div>
+
+    <!-- Box 7 - Middle Right (Small Photo) -->
+    <div class="bento-box box-7 scroll-animate delay-3">
+      <img src="/daniel-gallery.webp" alt="Daniel entertaining" class="bento-img" />
+    </div>
+
+    <!-- Box 8 - Bottom Right (Large Photo) -->
+    <div class="bento-box box-8 scroll-animate delay-4">
+      <img src="/face-paint.jpg" alt="Face painting session" class="bento-img" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .bento-section {
+    position: relative;
+    width: 100%;
+    min-height: 900px;
+    background: #FFC904;
+    border-top: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+    overflow: hidden;
+  }
+
+  /* Decorative Stripes */
+  .stripes {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+  }
+
+  .stripes-top {
+    top: 27%;
+  }
+
+  .stripes-bottom {
+    top: 64%;
+  }
+
+  .stripe {
+    width: 100%;
+  }
+
+  .stripe-teal {
+    height: 36px;
+    background: #24A096;
+    border-top: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+  }
+
+  .stripe-pink {
+    height: 36px;
+    background: #FD91E7;
+    border-bottom: 2px solid #000000;
+  }
+
+  .stripe-orange {
+    height: 37px;
+    background: #EE5D24;
+    border-bottom: 2px solid #000000;
+  }
+
+  /* Decorative Leaf */
+  .bento-leaf {
+    position: absolute;
+    left: -30px;
+    top: -30px;
+    transform: rotate(-11.22deg);
+    z-index: 10;
+  }
+
+  .bento-leaf-img {
+    width: 82px;
+    height: auto;
+    transition: transform 0.3s ease;
+    animation: leafFloat 3s ease-in-out infinite;
+  }
+
+  /* Bento Container */
+  .bento-container {
+    position: relative;
+    width: 86%;
+    max-width: 1240px;
+    height: 867px;
+    margin: 103px auto 60px auto;
+    z-index: 2;
+  }
+
+  /* Bento Boxes */
+  .bento-box {
+    position: absolute;
+    border: 4px solid #000000;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  }
+
+  .bento-box:hover {
+    transform: translateY(-8px);
+  }
+
+  .bento-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .bento-box:hover .bento-img {
+    transform: scale(1.05);
+  }
+
+  /* Box 1 - Top Left */
+  .box-1 {
+    left: 0;
+    top: 0;
+    width: 26%;
+    height: 34%;
+    filter: drop-shadow(6px 6px 0px #000000);
+  }
+
+  .box-1:hover {
+    filter: drop-shadow(6px 14px 0px #000000);
+  }
+
+  /* Box 2 - Bottom Left (Portrait) */
+  .box-2 {
+    left: 0;
+    top: 36%;
+    width: 26%;
+    height: 54%;
+    filter: drop-shadow(6px 6px 0px #000000);
+  }
+
+  .box-2:hover {
+    filter: drop-shadow(6px 14px 0px #000000);
+  }
+
+  /* Box 3 - Top Middle */
+  .box-3 {
+    left: 27%;
+    top: 0;
+    width: 24%;
+    height: 34%;
+    filter: drop-shadow(6px 6px 0px #000000);
+  }
+
+  .box-3:hover {
+    filter: drop-shadow(6px 14px 0px #000000);
+  }
+
+  /* Box 4 - Bottom Middle (Pink CTA) */
+  .box-4 {
+    left: 27%;
+    top: 36%;
+    width: 24%;
+    height: 54%;
+    box-shadow: 6px 6px 0px #000000;
+  }
+
+  .box-4:hover {
+    box-shadow: 6px 14px 0px #000000;
+  }
+
+  /* Box 5 - Top Right Wide */
+  .box-5 {
+    left: 52%;
+    top: 0;
+    width: 24%;
+    height: 48%;
+    filter: drop-shadow(6px 6px 0px #000000);
+  }
+
+  .box-5:hover {
+    filter: drop-shadow(6px 14px 0px #000000);
+  }
+
+  /* Box 6 - Top Far Right (Orange Info) */
+  .box-6 {
+    left: 77%;
+    top: 0;
+    width: 23%;
+    height: 23%;
+    box-shadow: 6px 6px 0px #000000;
+  }
+
+  .box-6:hover {
+    box-shadow: 6px 14px 0px #000000;
+  }
+
+  /* Box 7 - Middle Right */
+  .box-7 {
+    left: 77%;
+    top: 25%;
+    width: 23%;
+    height: 23%;
+    filter: drop-shadow(6px 6px 0px #000000);
+  }
+
+  .box-7:hover {
+    filter: drop-shadow(6px 14px 0px #000000);
+  }
+
+  /* Box 8 - Bottom Right (Large) */
+  .box-8 {
+    left: 52%;
+    top: 50%;
+    width: 48%;
+    height: 40%;
+    box-shadow: 6px 6px 0px #000000;
+  }
+
+  .box-8:hover {
+    box-shadow: 6px 14px 0px #000000;
+  }
+
+  /* Pink CTA Box */
+  .cta-box {
+    background: #FD91E7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    gap: 12px;
+  }
+
+  .cta-heading {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 30px;
+    line-height: 40px;
+    color: #FFC904;
+    -webkit-text-stroke: 1px #000000;
+    text-shadow: 4px 4px 0px #000000;
+    margin: 0 0 8px 0;
+  }
+
+  .cta-link {
+    width: 100%;
+    max-width: 237px;
+    min-height: 60px;
+    border: 2px solid #000000;
+    padding: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.3;
+    text-transform: capitalize;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+
+  .cta-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 4px 4px 0px #000000;
+  }
+
+  .cta-white {
+    background: #FAFAFA;
+    color: #000000;
+  }
+
+  .cta-white:hover {
+    background: #FFC904;
+  }
+
+  .cta-orange {
+    background: #FF7050;
+    color: #FAFAFA;
+  }
+
+  .cta-orange:hover {
+    background: #e5634a;
+  }
+
+  /* Orange Info Box */
+  .info-box {
+    background: #EE5D24;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 24px 24px 12px 24px;
+    gap: 12px;
+  }
+
+  .info-heading {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 30px;
+    line-height: 40px;
+    color: #FFC904;
+    -webkit-text-stroke: 1.5px #000000;
+    text-shadow: 4px 4px 0px #000000;
+    margin: 0;
+    transition: transform 0.3s ease;
+  }
+
+  .info-box:hover .info-heading {
+    animation: headingPop 0.5s ease;
+  }
+
+  .info-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+    margin: 0;
+  }
+
+  .cta-heading {
+    transition: transform 0.3s ease;
+  }
+
+  .cta-box:hover .cta-heading {
+    animation: headingPop 0.5s ease;
+  }
+
+  /* Hover Animations */
+  @keyframes leafFloat {
+    0%, 100% { transform: rotate(-11.22deg) translateY(0); }
+    50% { transform: rotate(-8deg) translateY(-5px); }
+  }
+
+  @keyframes headingPop {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  /* Responsive - Tablet */
+  @media (max-width: 1200px) {
+    .bento-section {
+      min-height: auto;
+      padding: 60px 0;
+    }
+
+    .bento-container {
+      width: 90%;
+      height: auto;
+      margin: 40px auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      position: relative;
+    }
+
+    .bento-box {
+      position: relative;
+      left: auto !important;
+      top: auto !important;
+      width: 100% !important;
+      height: auto !important;
+      min-height: 250px;
+      filter: none !important;
+      box-shadow: 4px 4px 0px #000000;
+    }
+
+    .bento-box:hover {
+      box-shadow: 4px 12px 0px #000000;
+    }
+
+    .box-2,
+    .box-4 {
+      min-height: 350px;
+    }
+
+    .box-8 {
+      grid-column: span 2;
+    }
+
+    .stripes {
+      display: none;
+    }
+
+    .bento-leaf {
+      display: none;
+    }
+
+    .cta-link {
+      max-width: 100%;
+    }
+  }
+
+  /* Responsive - Mobile */
+  @media (max-width: 768px) {
+    .bento-section {
+      padding: 40px 0;
+    }
+
+    .bento-container {
+      width: 90%;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .bento-box {
+      min-height: 200px;
+      box-shadow: 3px 3px 0px #000000;
+    }
+
+    .bento-box:hover {
+      box-shadow: 3px 11px 0px #000000;
+    }
+
+    .box-2,
+    .box-4 {
+      min-height: 300px;
+    }
+
+    .box-8 {
+      grid-column: span 1;
+    }
+
+    .cta-heading,
+    .info-heading {
+      font-size: 24px;
+      line-height: 32px;
+    }
+
+    .cta-link {
+      font-size: 14px;
+      min-height: 50px;
+      padding: 10px;
+    }
+
+    .info-text {
+      font-size: 14px;
+      line-height: 22px;
+    }
+  }
+</style>

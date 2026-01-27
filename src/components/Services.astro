@@ -1,0 +1,545 @@
+---
+// Services Component - Simply Smiles
+
+const services = [
+  {
+    id: 1,
+    name: "Balloon Twisting",
+    description: "Dozens of creative designs that make kids light up. 15-50 balloons per hour depending on complexity.",
+    icon: "fa-wand-magic-sparkles",
+    featured: false
+  },
+  {
+    id: 2,
+    name: "Face Painting",
+    description: "Beautiful, fast face & arm paintings for all ages. Up to 30 faces per hour.",
+    icon: "fa-palette",
+    featured: false
+  },
+  {
+    id: 3,
+    name: "Combo Artist",
+    description: "Can't choose? Get both! One entertainer brings balloons AND face painting.",
+    icon: "fa-star",
+    featured: true
+  },
+  {
+    id: 4,
+    name: "Daniel The Half-Clown",
+    description: "The full experience: balloons, face painting, magic, juggling, and a 20-minute show.",
+    icon: "fa-face-grin-wide",
+    featured: false
+  },
+  {
+    id: 5,
+    name: "Airbrush Tattoos",
+    description: "Quick-apply temporary tattoos that last for days. Perfect for larger crowds.",
+    icon: "fa-spray-can",
+    featured: false
+  },
+  {
+    id: 6,
+    name: "Party Favors",
+    description: "Pre-made balloon candy cups — a fun, affordable addition to any party.",
+    icon: "fa-gift",
+    featured: false
+  }
+];
+---
+
+<section class="services">
+  <!-- Decorative Elements -->
+  <div class="deco-left">
+    <img src="/honk-icon.svg" alt="" class="deco-img" />
+  </div>
+
+  <div class="deco-right">
+    <img src="/sun-icon.svg" alt="" class="deco-img" />
+  </div>
+
+  <!-- Section Header -->
+  <div class="services-header scroll-animate">
+    <div class="services-badge">
+      <span>Our Services</span>
+    </div>
+    <h2 class="services-heading">Everything You Need. One Call.</h2>
+  </div>
+
+  <!-- Service Cards -->
+  <div class="services-cards">
+    {services.map((service, index) => (
+      <div class={`service-card scroll-animate delay-${Math.min(index + 1, 4)} ${service.featured ? 'featured' : ''}`}>
+        <div class="card-left">
+          <div class="service-icon">
+            <i class={`fas ${service.icon}`}></i>
+          </div>
+          <span class="service-name">{service.name}</span>
+        </div>
+        <div class="card-middle">
+          <p class="service-description">{service.description}</p>
+        </div>
+        <div class="card-right">
+          <a href={`/services#${service.name.toLowerCase().replace(/\s+/g, '-')}`} class="learn-more-btn">
+            <span>LEARN MORE</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Bottom CTA Section -->
+  <div class="services-bottom scroll-animate">
+    <p class="bottom-text">
+      Why juggle multiple vendors when one company can do it all? Our multi-talented entertainers bring balloon twisting, face painting, magic shows, and more — all at one affordable rate.
+    </p>
+    <a href="/services" class="view-all-btn">VIEW ALL</a>
+  </div>
+
+  <!-- Bottom Decorative Elements -->
+  <div class="deco-bottom-left">
+    <img src="/clown-icon.svg" alt="" class="deco-img-bottom" />
+  </div>
+
+  <div class="deco-bottom-right">
+    <img src="/wind-up-mouse.svg" alt="" class="deco-img-bottom" />
+  </div>
+</section>
+
+<style>
+  .services {
+    position: relative;
+    width: 100%;
+    background: #EE5D24;
+    padding: 80px 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    overflow: hidden;
+  }
+
+  /* Decorative Elements */
+  .deco-left {
+    position: absolute;
+    left: 80px;
+    top: 60px;
+  }
+
+  .deco-img {
+    width: auto;
+    height: 160px;
+    object-fit: contain;
+    animation: decoSpin 12s linear infinite;
+  }
+
+  .deco-img-bottom {
+    width: auto;
+    height: 140px;
+    object-fit: contain;
+    animation: decoSpin 10s linear infinite;
+  }
+
+  .deco-right {
+    position: absolute;
+    right: 80px;
+    top: 80px;
+  }
+
+  .deco-bottom-left {
+    position: absolute;
+    left: 60px;
+    bottom: 40px;
+  }
+
+  .deco-bottom-right {
+    position: absolute;
+    right: 60px;
+    bottom: 40px;
+  }
+
+  /* Section Header */
+  .services-header {
+    width: 956px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    z-index: 1;
+  }
+
+  .services-badge {
+    width: auto;
+    height: 32px;
+    background: #FD91E7;
+    border: 1px solid #000000;
+    box-shadow: 6px 6px 0px #000000;
+    white-space: nowrap;
+    transform: rotate(4.31deg);
+    padding: 4px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .services-badge span {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: capitalize;
+    color: #000000;
+  }
+
+  .services-badge {
+    transition: transform 0.3s ease;
+  }
+
+  .services-badge:hover {
+    animation: badgeWiggle 0.5s ease;
+  }
+
+  .services-heading {
+    width: 956px;
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 64px;
+    line-height: 75px;
+    text-transform: capitalize;
+    text-align: center;
+    color: #FFC904;
+    -webkit-text-stroke: 1.5px #000000;
+    text-shadow: 6px 6px 0px #000000;
+    margin: 0;
+  }
+
+  /* Service Cards Container */
+  .services-cards {
+    width: 960px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 1;
+  }
+
+  /* Individual Service Card */
+  .service-card {
+    width: 100%;
+    background: #FAFAFA;
+    border: 2px solid #000000;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px 16px 0px 0px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .service-card:hover {
+    transform: translateX(8px);
+    box-shadow: 6px 6px 0px #000000;
+  }
+
+  .service-card.featured {
+    background: #FFFFFF;
+    box-shadow: 6px 6px 0px #000000;
+  }
+
+  .service-card.featured:hover {
+    transform: translateX(8px);
+    box-shadow: 10px 10px 0px #000000;
+  }
+
+  /* Card Left Section - Icon & Name */
+  .card-left {
+    width: 280px;
+    min-width: 280px;
+    border-right: 2px solid #000000;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .service-icon {
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+    background: #FFC904;
+    border: 1px solid #000000;
+    box-shadow: 3px 3px 0px #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+  }
+
+  .service-card:hover .service-icon {
+    animation: iconBounce 0.5s ease;
+  }
+
+  .service-icon i {
+    font-size: 24px;
+    color: #000000;
+    transition: transform 0.3s ease;
+  }
+
+  .service-card:hover .service-icon i {
+    animation: iconSpin 0.5s ease;
+  }
+
+  .service-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: capitalize;
+    color: #000000;
+  }
+
+  /* Card Middle Section - Description */
+  .card-middle {
+    flex: 1;
+    border-right: 2px solid #000000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 16px;
+  }
+
+  .service-description {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    color: #000000;
+    margin: 0;
+  }
+
+  /* Card Right Section - CTA Button */
+  .card-right {
+    width: 240px;
+    min-width: 240px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 24px;
+  }
+
+  .learn-more-btn {
+    width: 100%;
+    height: 56px;
+    background: #24A096;
+    border: 1px solid #000000;
+    filter: drop-shadow(6px 6px 0px #000000);
+    padding: 16px 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease, background 0.3s ease;
+  }
+
+  .learn-more-btn:hover {
+    transform: translateY(-4px);
+    filter: drop-shadow(6px 10px 0px #000000);
+    background: #1d8a81;
+  }
+
+  .learn-more-btn span {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #FAFAFA;
+  }
+
+  .learn-more-btn i {
+    font-size: 12px;
+    color: #FAFAFA;
+    transition: transform 0.3s ease;
+  }
+
+  .learn-more-btn:hover i {
+    animation: arrowSlide 0.4s ease infinite;
+  }
+
+  /* Bottom CTA Section */
+  .services-bottom {
+    width: 960px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    margin-top: 40px;
+    z-index: 1;
+  }
+
+  .bottom-text {
+    max-width: 758px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    color: #000000;
+    margin: 0;
+  }
+
+  .view-all-btn {
+    width: 141px;
+    min-width: 141px;
+    height: 56px;
+    background: #24A096;
+    border: 1px solid #000000;
+    box-shadow: 6px 6px 0px #000000;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #FAFAFA;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  }
+
+  .view-all-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 6px 10px 0px #000000;
+    background: #1d8a81;
+  }
+
+  /* Hover Animations */
+  @keyframes iconBounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+
+  @keyframes iconSpin {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-15deg); }
+    75% { transform: rotate(15deg); }
+    100% { transform: rotate(0deg); }
+  }
+
+  @keyframes arrowSlide {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(4px); }
+  }
+
+  @keyframes badgeWiggle {
+    0%, 100% { transform: rotate(4.31deg); }
+    25% { transform: rotate(7deg); }
+    75% { transform: rotate(1deg); }
+  }
+
+  @keyframes decoSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Responsive - Tablet */
+  @media (max-width: 1439px) {
+    .services {
+      padding: 60px 40px;
+    }
+
+    .services-header {
+      width: 100%;
+    }
+
+    .services-heading {
+      width: 100%;
+      font-size: 56px;
+      line-height: 65px;
+    }
+
+    .services-cards {
+      width: 100%;
+    }
+
+    .services-bottom {
+      width: 100%;
+    }
+
+    .deco-left,
+    .deco-right,
+    .deco-bottom-left,
+    .deco-bottom-right {
+      display: none;
+    }
+  }
+
+  /* Responsive - Mobile */
+  @media (max-width: 768px) {
+    .services {
+      padding: 40px 20px;
+      gap: 32px;
+    }
+
+    .services-heading {
+      font-size: 42px;
+      line-height: 50px;
+    }
+
+    .services-badge {
+      width: auto;
+      transform: rotate(0deg);
+    }
+
+    .service-card {
+      flex-direction: column;
+      padding: 0;
+    }
+
+    .card-left {
+      width: 100%;
+      min-width: unset;
+      border-right: none;
+      border-bottom: 2px solid #000000;
+      padding: 16px;
+    }
+
+    .card-middle {
+      width: 100%;
+      border-right: none;
+      border-bottom: 2px solid #000000;
+      padding: 16px;
+    }
+
+    .card-right {
+      width: 100%;
+      min-width: unset;
+      padding: 16px;
+    }
+
+    .learn-more-btn {
+      width: 100%;
+    }
+
+    .services-bottom {
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .bottom-text {
+      text-align: center;
+    }
+
+    .view-all-btn {
+      width: 100%;
+    }
+
+    .deco-left,
+    .deco-right,
+    .deco-bottom-left,
+    .deco-bottom-right {
+      display: none;
+    }
+  }
+</style>

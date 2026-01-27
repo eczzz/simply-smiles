@@ -1,0 +1,394 @@
+---
+// Hero Component - Simply Smiles
+
+// Generate confetti pieces with random properties
+const colors = ['#d13447', '#ffbf00', '#263672'];
+const confettiCount = 150;
+
+const confettiPieces = Array.from({ length: confettiCount }, (_, i) => {
+  const width = Math.floor(Math.random() * 12) + 4;
+  const left = Math.floor(Math.random() * 100);
+  const color = colors[Math.floor(Math.random() * 3)];
+  const opacity = (Math.random() + 0.5).toFixed(2);
+  const rotation = Math.floor(Math.random() * 360);
+  const duration = (4 + Math.random()).toFixed(2);
+  const delay = Math.random().toFixed(2);
+  const drift = Math.floor(Math.random() * 15);
+
+  return {
+    id: i,
+    width,
+    height: (width * 0.4).toFixed(1),
+    left,
+    color,
+    opacity,
+    rotation,
+    duration,
+    delay,
+    drift
+  };
+});
+---
+
+<section class="hero">
+  <!-- Confetti Animation -->
+  <div class="confetti-wrapper">
+    {confettiPieces.map((piece) => (
+      <div
+        class="confetti"
+        style={`
+          width: ${piece.width}px;
+          height: ${piece.height}px;
+          background-color: ${piece.color};
+          left: ${piece.left}%;
+          opacity: ${piece.opacity};
+          transform: rotate(${piece.rotation}deg);
+          animation: drop-${piece.id} ${piece.duration}s ${piece.delay}s forwards;
+        `}
+      />
+    ))}
+  </div>
+
+  <Fragment set:html={`<style>${confettiPieces.map((piece) => `
+    @keyframes drop-${piece.id} {
+      100% {
+        top: 110%;
+        left: ${piece.left + piece.drift}%;
+      }
+    }
+  `).join('')}</style>`} />
+
+  <div class="hero-content">
+    <div class="hero-heading-wrapper">
+      <h1 class="hero-heading">
+        MAKE YOUR PARTY THE ONE KIDS TALK ABOUT
+      </h1>
+      <svg class="hero-deco" width="356" height="210" viewBox="0 0 356 210" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M233.095 113.554L260.771 102.89C271.951 109.798 296.544 124.406 305.481 127.573C314.419 130.74 321.196 123.684 323.466 119.76C327.981 112.618 337.442 96.2988 339.164 88.1555C340.886 80.0122 333.922 73.9236 330.224 71.8972C312.539 62.3853 276.613 43.0574 274.395 41.8416C271.622 40.3218 261.523 36.0491 255.03 39.3424C248.537 42.6356 239.365 60.6876 234.226 74.9998C230.115 86.4496 235.296 95.8285 240.773 97.5681L233.095 113.554Z" fill="black"/>
+        <path d="M233.094 113.554L260.838 109.647C272.017 116.555 296.61 131.162 305.548 134.33C314.486 137.497 321.262 130.441 323.533 126.517C328.048 119.375 337.509 103.056 339.231 94.9124C340.953 86.769 333.989 80.6804 330.291 78.6541C312.606 69.1421 276.68 49.8142 274.462 48.5984C271.689 47.0786 261.589 42.806 255.097 46.0992C248.604 49.3924 239.432 67.4444 234.293 81.7567C230.182 93.2064 240.109 99.5482 245.586 101.288L233.094 113.554Z" fill="#FD91E7" stroke="black" stroke-width="2"/>
+        <mask id="mask0_256_3664" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="246" y="58" width="80" height="62">
+          <path d="M324.992 97.2056C325.264 97.4989 319.236 109.136 316.187 114.918C312.604 119.877 307.259 120.242 305.035 119.804C293.462 113.943 267.748 100.92 257.472 95.7211C247.195 90.5219 246.199 85.0357 246.986 82.9426C247.659 80.7272 250.074 74.2139 254.351 65.8839C258.628 57.5538 265.279 57.5687 268.07 58.6174C274.645 62.5213 292.039 72.2582 309.013 79.9743C330.232 89.6195 324.653 96.839 324.992 97.2056Z" fill="#040000"/>
+        </mask>
+        <g mask="url(#mask0_256_3664)">
+          <path d="M324.992 97.2056C325.264 97.4989 319.236 109.136 316.187 114.918C312.604 119.877 307.259 120.242 305.035 119.804C293.462 113.943 267.748 100.92 257.472 95.7211C247.195 90.5219 246.199 85.0357 246.986 82.9426C247.659 80.7272 250.074 74.2139 254.351 65.8839C258.628 57.5538 265.279 57.5687 268.07 58.6174C274.645 62.5213 292.039 72.2582 309.013 79.9743C330.232 89.6195 324.653 96.839 324.992 97.2056Z" fill="black"/>
+          <path d="M249.707 96.8136C257.205 102.787 257.205 102.787 271.437 110.046C284.739 117.775 286.323 118.745 297.877 124.804C303.288 115.492 296.891 101.678 283.589 93.9483C270.287 86.2191 255.117 87.5019 249.707 96.8136Z" fill="#FFC904"/>
+          <path d="M315.434 82.4854L301.08 75.7347L299.004 80.1494C297.14 84.113 298.842 88.8374 302.806 90.7016C306.769 92.5657 311.494 90.8637 313.358 86.9L315.434 82.4854Z" fill="white"/>
+          <path d="M300.222 75.1279L286.074 67.9557L283.868 72.307C281.888 76.2138 283.449 80.9865 287.356 82.967C291.263 84.9476 296.036 83.3861 298.016 79.4793L300.222 75.1279Z" fill="white"/>
+          <path d="M285.361 67.7041L271.433 60.1138L269.099 64.3975C267.003 68.2436 268.422 73.0607 272.268 75.1567C276.114 77.2527 280.931 75.8339 283.027 71.9878L285.361 67.7041Z" fill="white"/>
+        </g>
+        <path d="M235.14 20.9736C235.292 21.3842 235.616 21.7084 236.026 21.8604L249.916 27L236.026 32.1396C235.667 32.2725 235.374 32.5371 235.205 32.876L235.14 33.0264L230 46.916L224.86 33.0264C224.708 32.6158 224.384 32.2916 223.974 32.1396L210.083 27L223.974 21.8604C224.384 21.7084 224.708 21.3842 224.86 20.9736L230 7.08301L235.14 20.9736Z" fill="white" stroke="black" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M19.4111 190.293C19.4618 190.43 19.5692 190.538 19.7061 190.589L28.9229 193.999L19.7061 197.41C19.6035 197.448 19.5171 197.518 19.459 197.608L19.4111 197.705L16 206.922L12.5898 197.705C12.5518 197.602 12.4812 197.516 12.3906 197.458L12.2939 197.41L3.07715 193.999L12.2939 190.589C12.4308 190.538 12.5392 190.43 12.5898 190.293L16 181.076L19.4111 190.293Z" fill="white" stroke="black" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <p class="hero-subheading">
+      From birthday parties to corporate picnics, Simply Smiles brings high-energy balloon artists, face painters, and entertainers who make every event unforgettable.
+    </p>
+
+    <a href="/quote" class="hero-cta">
+      GET A FREE QUOTE
+    </a>
+  </div>
+
+  <div class="separator-header">
+    <div class="line line-yellow"></div>
+    <div class="line line-orange"></div>
+    <div class="line line-pink"></div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    height: 900px;
+    padding-top: 73px;
+    background-image: url('/home-hero-v2.webp');
+    background-size: cover;
+    background-position: center calc(50% + 12rem);
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    overflow: visible;
+  }
+
+  /* Confetti Animation */
+  .confetti-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .confetti {
+    position: absolute;
+    top: -10%;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.68);
+    z-index: 1;
+  }
+
+  .separator-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    position: absolute;
+    width: 110vw;
+    height: 109px;
+    left: -5vw;
+    bottom: -50px;
+    transform: rotate(-2.32deg);
+    z-index: 10;
+  }
+
+  .line {
+    box-sizing: border-box;
+    width: 100%;
+    flex: none;
+    align-self: stretch;
+    flex-grow: 0;
+  }
+
+  .line-yellow {
+    height: 36px;
+    background: var(--primary);
+    border-width: 2px 0px;
+    border-style: solid;
+    border-color: var(--black);
+    order: 0;
+  }
+
+  .line-orange {
+    height: 37px;
+    background: var(--brand);
+    border-bottom: 2px solid var(--black);
+    order: 1;
+  }
+
+  .line-pink {
+    height: 36px;
+    background: var(--tertiary);
+    border-bottom: 2px solid var(--black);
+    order: 2;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    width: 813px;
+    margin-left: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .hero-heading-wrapper {
+    position: relative;
+    width: 813px;
+  }
+
+  .hero-heading {
+    width: 813px;
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 75px;
+    line-height: 80px;
+    text-transform: uppercase;
+    color: var(--primary);
+    -webkit-text-stroke: 1.5px var(--black);
+    text-shadow: 6px 6px 0px var(--black);
+    margin-bottom: 16px;
+    opacity: 0;
+    animation: slideUp 0.8s ease-out 0.2s forwards;
+  }
+
+  .hero-deco {
+    position: absolute;
+    top: calc(-20px + 2rem);
+    right: calc(-180px + 4rem);
+    width: 375px;
+    height: auto;
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out 0.5s forwards;
+  }
+
+  .hero-subheading {
+    width: 813px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    color: var(--black);
+    opacity: 0;
+    animation: slideUp 0.8s ease-out 0.6s forwards;
+  }
+
+  .hero-cta {
+    width: 247px;
+    height: 72px;
+    background: var(--secondary);
+    border: 1px solid var(--black);
+    box-shadow: 12px 12px 0px var(--black);
+    padding: 24px 32px;
+    margin-top: 24px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: var(--light);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    animation: slideUp 0.8s ease-out 0.9s forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  }
+
+  .hero-cta:hover {
+    transform: translateY(-6px);
+    box-shadow: 12px 18px 0px var(--black);
+    background: #1d8a81;
+  }
+
+  /* Entry Animations */
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes decoWobble {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(-5deg) scale(1.05); }
+    50% { transform: rotate(3deg) scale(1.02); }
+    75% { transform: rotate(-2deg) scale(1.03); }
+  }
+
+  /* Tablet Responsive */
+  @media (max-width: 1200px) {
+    .hero {
+      height: auto;
+      min-height: 800px;
+      padding: 100px 40px 120px 40px;
+      background-position: center top;
+    }
+
+    .hero-content {
+      width: 100%;
+      margin-left: 0;
+      gap: 32px;
+    }
+
+    .hero-heading-wrapper {
+      width: 100%;
+    }
+
+    .hero-heading {
+      width: 100%;
+      font-size: 60px;
+      line-height: 68px;
+    }
+
+    .hero-deco {
+      display: none;
+    }
+
+    .hero-subheading {
+      width: 100%;
+      font-size: 18px;
+      line-height: 28px;
+    }
+
+    .separator-header {
+      width: 200vw;
+      left: -50vw;
+      bottom: -40px;
+    }
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .hero {
+      height: auto;
+      min-height: 100svh;
+      padding: 100px 20px 120px 20px;
+      background-position: center center;
+    }
+
+    .hero-content {
+      width: 100%;
+      margin-left: 0;
+      gap: 24px;
+    }
+
+    .hero-heading-wrapper {
+      width: 100%;
+    }
+
+    .hero-heading {
+      width: 100%;
+      font-size: 42px;
+      line-height: 48px;
+      text-shadow: 4px 4px 0px var(--black);
+    }
+
+    .hero-deco {
+      display: none;
+    }
+
+    .hero-subheading {
+      width: 100%;
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .hero-cta {
+      width: 100%;
+      height: 64px;
+      margin-top: 12px;
+      box-shadow: 8px 8px 0px var(--black);
+    }
+
+    .hero-cta:hover {
+      box-shadow: 8px 12px 0px var(--black);
+    }
+
+    .separator-header {
+      width: 110vw;
+      left: -5vw;
+      bottom: -30px;
+    }
+
+    .line {
+      width: 100%;
+    }
+  }
+</style>
