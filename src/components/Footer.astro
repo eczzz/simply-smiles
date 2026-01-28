@@ -87,6 +87,26 @@ const socialIcons = [
 
       <!-- Column 4 - Stay in Touch -->
       <div class="footer-column stay-column">
+        <!-- Mobile Contact Boxes -->
+        <div class="mobile-contact-boxes">
+          <div class="contact-box">
+            <div class="contact-icon phone-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-text">
+              <span>(021) 345-6789</span>
+            </div>
+          </div>
+          <div class="contact-box">
+            <div class="contact-icon email-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-text">
+              <span>customer@example.com</span>
+            </div>
+          </div>
+        </div>
+
         <h3 class="footer-heading">Stay in Touch</h3>
         <p class="stay-description">
           Keep up to date on social media or contact us with any other information.
@@ -196,6 +216,11 @@ const socialIcons = [
     flex-grow: 1;
   }
 
+  /* Mobile Contact Boxes - Hidden on Desktop */
+  .mobile-contact-boxes {
+    display: none;
+  }
+
   /* Footer Headings */
   .footer-heading {
     font-family: 'Black Han Sans', sans-serif;
@@ -231,12 +256,13 @@ const socialIcons = [
   .contact-boxes {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    margin-top: 16px;
+    gap: 8px;
+    margin-top: 8px;
   }
 
   .contact-box {
-    width: 320px;
+    width: fit-content;
+    min-width: 240px;
     height: 44px;
     border: 2px solid #000000;
     box-shadow: 4px 4px 0px #000000;
@@ -273,7 +299,7 @@ const socialIcons = [
     background: #FAFAFA;
     display: flex;
     align-items: center;
-    padding: 0 60px 0 16px;
+    padding: 0 16px 0 16px;
   }
 
   .contact-text span {
@@ -311,6 +337,13 @@ const socialIcons = [
     justify-content: center;
     align-items: center;
     text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  }
+
+  .social-icon:hover {
+    background: #FFC904;
+    transform: translateY(-4px);
+    box-shadow: 3px 7px 0px #000000;
   }
 
   .social-icon i {
@@ -329,6 +362,7 @@ const socialIcons = [
     width: 147px;
     height: auto;
     object-fit: contain;
+    animation: footerFloat 4s ease-in-out infinite;
   }
 
   /* Divider */
@@ -349,6 +383,24 @@ const socialIcons = [
     width: 150px;
     height: auto;
     object-fit: contain;
+    animation: footerFloat 3.5s ease-in-out infinite;
+    animation-delay: 0.5s;
+  }
+
+  /* Float Animation */
+  @keyframes footerFloat {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-10px) rotate(1deg);
+    }
+    50% {
+      transform: translateY(-5px) rotate(-1deg);
+    }
+    75% {
+      transform: translateY(-12px) rotate(0.5deg);
+    }
   }
 
   /* Footer Bottom */
@@ -459,9 +511,10 @@ const socialIcons = [
 
     .footer-content {
       display: flex;
-      flex-direction: column;
-      gap: 32px;
-      align-items: center;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 24px;
+      align-items: flex-start;
     }
 
     .brand-box {
@@ -487,38 +540,35 @@ const socialIcons = [
       text-align: center;
     }
 
-    .support-column,
-    .stay-column {
+    .footer-column:nth-child(2),
+    .footer-column:nth-child(3) {
+      width: calc(50% - 12px);
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .footer-column:nth-child(4) {
       width: 100%;
     }
 
     .footer-links {
-      align-items: center;
+      align-items: flex-start;
     }
 
-    .contact-boxes {
-      width: 100%;
-      align-items: center;
+    .support-column .contact-boxes {
+      display: none;
     }
 
-    .contact-box {
-      width: 100%;
-      max-width: 100%;
-      height: 40px;
+    .mobile-contact-boxes {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
     }
 
-    .contact-icon {
-      width: 40px;
-    }
-
-    .contact-text {
-      padding: 0 12px 0 12px;
-      justify-content: center;
-    }
-
-    .contact-text span {
-      font-size: 13px;
-      word-break: break-word;
+    .mobile-contact-boxes .contact-box {
+      width: fit-content;
+      min-width: unset;
     }
 
     .footer-heading {
