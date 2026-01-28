@@ -102,15 +102,16 @@ const confettiPieces = Array.from({ length: confettiCount }, (_, i) => {
     position: relative;
     z-index: 10;
     width: 100%;
-    height: 900px;
+    min-height: 100vh;
     padding-top: 73px;
-    background-image: url('/home-hero-v2.webp');
-    background-size: cover;
-    background-position: center calc(50% + 12rem);
-    background-repeat: no-repeat;
     display: flex;
     align-items: center;
     overflow: visible;
+    background-image: url('/home-hero-v2.webp');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
   }
 
   /* Confetti Animation */
@@ -222,7 +223,23 @@ const confettiPieces = Array.from({ length: confettiCount }, (_, i) => {
     width: 375px;
     height: auto;
     opacity: 0;
-    animation: fadeIn 0.6s ease-out 0.5s forwards;
+    animation: fadeIn 0.6s ease-out 0.5s forwards,
+               float 4s ease-in-out 1.2s infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-12px) rotate(2deg);
+    }
+    50% {
+      transform: translateY(-6px) rotate(-1deg);
+    }
+    75% {
+      transform: translateY(-15px) rotate(1deg);
+    }
   }
 
   .hero-subheading {
@@ -237,12 +254,12 @@ const confettiPieces = Array.from({ length: confettiCount }, (_, i) => {
   }
 
   .hero-cta {
-    width: 247px;
+    width: fit-content;
     height: 72px;
     background: var(--secondary);
     border: 1px solid var(--black);
-    box-shadow: 12px 12px 0px var(--black);
-    padding: 24px 32px;
+    box-shadow: 6px 6px 0px var(--black);
+    padding: 24px 40px;
     margin-top: 24px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
@@ -253,14 +270,15 @@ const confettiPieces = Array.from({ length: confettiCount }, (_, i) => {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    white-space: nowrap;
     opacity: 0;
     animation: slideUp 0.8s ease-out 0.9s forwards;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
   }
 
   .hero-cta:hover {
-    transform: translateY(-6px);
-    box-shadow: 12px 18px 0px var(--black);
+    transform: translateY(-4px);
+    box-shadow: 6px 10px 0px var(--black);
     background: #1d8a81;
   }
 
@@ -290,6 +308,23 @@ const confettiPieces = Array.from({ length: confettiCount }, (_, i) => {
     25% { transform: rotate(-5deg) scale(1.05); }
     50% { transform: rotate(3deg) scale(1.02); }
     75% { transform: rotate(-2deg) scale(1.03); }
+  }
+
+  /* Large Screens */
+  @media (min-width: 1441px) {
+    .hero {
+      min-height: 100vh;
+      height: 100vh;
+      background-position: center top;
+      background-size: cover;
+    }
+  }
+
+  /* Extra Large Screens */
+  @media (min-width: 1920px) {
+    .hero {
+      background-position: center top;
+    }
   }
 
   /* Tablet Responsive */
@@ -374,16 +409,16 @@ const confettiPieces = Array.from({ length: confettiCount }, (_, i) => {
       width: 100%;
       height: 64px;
       margin-top: 12px;
-      box-shadow: 8px 8px 0px var(--black);
+      box-shadow: 6px 6px 0px var(--black);
     }
 
     .hero-cta:hover {
-      box-shadow: 8px 12px 0px var(--black);
+      box-shadow: 6px 10px 0px var(--black);
     }
 
     .separator-header {
-      width: 110vw;
-      left: -5vw;
+      width: 200vw;
+      left: -50vw;
       bottom: -30px;
     }
 
